@@ -66,6 +66,9 @@
         context.drawImage(imgEle1, 0, 0);
         context.globalAlpha = 1.0;
         context.drawImage(imgEle2, imgEle1.width, 0);
+
+        var dataURL = resEle.toDataURL();
+        console.log(dataURL);
       });
 
       function init() {
