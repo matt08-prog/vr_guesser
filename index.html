@@ -50,6 +50,7 @@
       let b642 = "data:image/png;base64,";
 
       function getBase64Image(img) {
+        img.setAttribute("crossOrigin", "anonymous");
         var canvas = document.createElement("canvas");
         canvas.width = img.width;
         canvas.height = img.height;
