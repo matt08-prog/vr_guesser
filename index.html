@@ -38,7 +38,7 @@
       let url2 =
         "https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=180.01&pitch=-0.76&key=AIzaSyCdksRwVLOQCqlPF1qXBfAXQwyuKfFdI7s";
 
-      mergeImges([
+      mergeImages([
         { src: url1, x: 0, y: 0 },
         { src: url2, x: 0, y: 500 },
       ]).then((b64) => (document.querySelector("img").src = b64));
