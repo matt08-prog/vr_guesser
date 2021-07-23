@@ -54,11 +54,17 @@
       let b641;
       let b642;
 
-      let imgEle1 = document.querySelector(".img1");
-      let imgEle2 = document.querySelector(".img2");
+      let imgEle1 = new Image();
+      imgEle1.setAttribute("crossOrigin", "anonymous");
+      imgEle1.src = url1;
+      let imgEle2 = new Image();
+      imgEle2.setAttribute("crossOrigin", "anonymous");
+      imgEle2.src = url2;
+
       let resEle = document.querySelector(".result");
       var context = resEle.getContext("2d");
       let BtnEle = document.querySelector(".Btn");
+
       BtnEle.addEventListener("click", () => {
         resEle.width = imgEle1.width + imgEle2.width;
         resEle.height = imgEle1.height;
