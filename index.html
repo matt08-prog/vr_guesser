@@ -28,10 +28,14 @@
       animate();
 
       function init() {
-
-		$.get ("https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=180.78&pitch=-0.76&key=AIzaSyCdksRwVLOQCqlPF1qXBfAXQwyuKfFdI7s", function(data) {
-			console.log(data);	
-		})
+        console.log("loading");
+        $.get(
+          "https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=180.78&pitch=-0.76&key=AIzaSyCdksRwVLOQCqlPF1qXBfAXQwyuKfFdI7s",
+          function (data) {
+            console.log(data);
+            console.log("loaded");
+          }
+        );
 
         renderer = new THREE.WebGLRenderer();
         renderer.setPixelRatio(window.devicePixelRatio);
