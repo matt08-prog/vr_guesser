@@ -19,9 +19,17 @@
   <!-- jpg merger -->
   <script src="https://unpkg.com/merge-images"></script>
   <body>
-    <!-- <image
+    <image
       src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=0.01&pitch=-0.76&key=AIzaSyCdksRwVLOQCqlPF1qXBfAXQwyuKfFdI7s"
-    ></image> -->
+	  class="img1"
+	  ></image>
+
+	
+    <image
+      src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=180.01&pitch=-0.76&key=AIzaSyCdksRwVLOQCqlPF1qXBfAXQwyuKfFdI7s"
+	  class="img2"
+	  ></image>
+
     <script type="module">
       import * as THREE from "./build/three.module.js";
       import { VRButton } from "./jsm/webxr/VRButton.js";
@@ -42,23 +50,23 @@
       let b641 = "data:image/png;base64,";
       let b642 = "data:image/png;base64,";
 
-      $.get(url1, function (data) {
-        console.image(data);
-        console.log("loaded");
-        b641 = "data:image/png;base64," + data;
+      function getBase64Image(img) {
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        var dataURL = canvas.toDataURL("image/png");
+        return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+      }
 
-        $.get(url2, function (data) {
-          console.image(data);
-          console.log("loaded");
-          b642 = "data:image/png;base64," + data;
+	  b641 = b641 + getBase64Image(document.querySelector(".img1"))
+	  b642 = b642 + getBase64Image(document.querySelector(".img2"))
 
-          mergeImages([
-            { src: b641, x: 0, y: 0 },
-            { src: b642, x: 0, y: 500 },
-          ]).then((b64) => (document.querySelector("img").src = b64));
-        });
-      });
-
+      mergeImages([
+        { src: b641, x: 0, y: 0 },
+        { src: b642, x: 0, y: 500 },
+      ]).then((b64) => (document.querySelector("img").src = b64));
       function init() {
         console.log("loading");
 
