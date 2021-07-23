@@ -59,8 +59,8 @@
         return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
       }
 
-      b641 = b641 + getBase64Image(document.querySelector(".img1"));
-      b642 = b642 + getBase64Image(document.querySelector(".img2"));
+      b641 = getBase64Image(document.querySelector(".img1"));
+      b642 = getBase64Image(document.querySelector(".img2"));
 
       mergeImages([
         { src: b641, x: 0, y: 0 },
