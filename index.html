@@ -21,14 +21,13 @@
   <body>
     <image
       src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=0.01&pitch=-0.76&key=AIzaSyCdksRwVLOQCqlPF1qXBfAXQwyuKfFdI7s"
-	  class="img1"
-	  ></image>
+      class="img1"
+    ></image>
 
-	
     <image
       src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=180.01&pitch=-0.76&key=AIzaSyCdksRwVLOQCqlPF1qXBfAXQwyuKfFdI7s"
-	  class="img2"
-	  ></image>
+      class="img2"
+    ></image>
 
     <script type="module">
       import * as THREE from "./build/three.module.js";
@@ -60,8 +59,8 @@
         return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
       }
 
-	  b641 = b641 + getBase64Image(document.querySelector(".img1"))
-	  b642 = b642 + getBase64Image(document.querySelector(".img2"))
+      b641 = b641 + getBase64Image(document.querySelector(".img1"));
+      b642 = b642 + getBase64Image(document.querySelector(".img2"));
 
       mergeImages([
         { src: b641, x: 0, y: 0 },
