@@ -14,6 +14,7 @@
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
     crossorigin="anonymous"
   ></script>
+  <script src="https://cdn.rawgit.com/adriancooney/console.image/c9e6d4fd/console.image.min.js"></script>
   <body>
     <script type="module">
       import * as THREE from "./build/three.module.js";
@@ -32,7 +33,7 @@
         $.get(
           "https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=180.78&pitch=-0.76&key=AIzaSyCdksRwVLOQCqlPF1qXBfAXQwyuKfFdI7s",
           function (data) {
-            console.log(data);
+            console.image(data);
             console.log("loaded");
           }
         );
