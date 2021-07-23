@@ -58,7 +58,7 @@
         var ctx = canvas.getContext("2d");
         ctx.drawImage(img, 0, 0);
         var dataURL = canvas.toDataURL("image/png");
-        return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+        return dataURL;
       }
 
       b641 = getBase64Image(document.querySelector(".img1"));
@@ -70,10 +70,10 @@
       mergeImages([
         { src: b641, x: 0, y: 0 },
         { src: b642, x: 0, y: 500 },
-      ]).then(
-        (b64) =>
-          (document.querySelector("img").src = "data:image/png;base64," + b64)
-      );
+      ]).then((b64) => {
+        document.querySelector("img").src = "data:image/png;base64," + b64;
+        console.log("data:image/png;base64," + b64);
+      });
 
       function init() {
         console.log("loading");
