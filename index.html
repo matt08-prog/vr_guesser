@@ -28,7 +28,8 @@
       src="https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=180.01&pitch=-0.76&key=AIzaSyCdksRwVLOQCqlPF1qXBfAXQwyuKfFdI7s"
       class="img2"
     ></image>
-
+    <button class="Btn">CLICK HERE</button>
+    <h3>Click on the above button to combine the two images above together</h3>
     <script type="module">
       import * as THREE from "./build/three.module.js";
       import { VRButton } from "./jsm/webxr/VRButton.js";
@@ -41,36 +42,27 @@
       //init();
       //animate();
 
-      let url1 = require("https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=0.01&pitch=-0.76&key=AIzaSyCdksRwVLOQCqlPF1qXBfAXQwyuKfFdI7s");
-      let url2 = require("https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=180.01&pitch=-0.76&key=AIzaSyCdksRwVLOQCqlPF1qXBfAXQwyuKfFdI7s");
+      let url1 =
+        "https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=0.01&pitch=-0.76&key=AIzaSyCdksRwVLOQCqlPF1qXBfAXQwyuKfFdI7s";
+      let url2 =
+        "https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=180.01&pitch=-0.76&key=AIzaSyCdksRwVLOQCqlPF1qXBfAXQwyuKfFdI7s";
 
       let base = "data:image/png;base64,";
       let b641;
       let b642;
 
-      function getBase64Image(img) {
-        img.setAttribute("crossOrigin", "anonymous");
-        var canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
-        var ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0);
-        var dataURL = canvas.toDataURL("image/png");
-        return dataURL;
-      }
-
-      b641 = getBase64Image(document.querySelector(".img1"));
-      b642 = getBase64Image(document.querySelector(".img2"));
-
-      console.log(b641);
-      console.log(b642);
-
-      mergeImages([
-        { src: url1, x: 0, y: 0 },
-        { src: url2, x: 0, y: 500 },
-      ]).then((b64) => {
-        document.querySelector("img").src = "data:image/png;base64," + b64;
-        console.log("data:image/png;base64," + b64);
+      let imgEle1 = document.querySelectorAll(".image")[0];
+      let imgEle2 = document.querySelectorAll(".image")[1];
+      let resEle = document.querySelector(".result");
+      var context = resEle.getContext("2d");
+      let BtnEle = document.querySelector(".Btn");
+      BtnEle.addEventListener("click", () => {
+        resEle.width = imgEle1.width;
+        resEle.height = imgEle1.height;
+        context.globalAlpha = 1.0;
+        context.drawImage(imgEle1, 0, 0);
+        context.globalAlpha = 0.5;
+        context.drawImage(imgEle2, 0, 0);
       });
 
       function init() {
