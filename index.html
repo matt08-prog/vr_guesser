@@ -33,30 +33,33 @@
 
       //init();
       //animate();
-	  
+
       let url1 =
         "https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=0.01&pitch=-0.76&key=AIzaSyCdksRwVLOQCqlPF1qXBfAXQwyuKfFdI7s";
       let url2 =
         "https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=180.01&pitch=-0.76&key=AIzaSyCdksRwVLOQCqlPF1qXBfAXQwyuKfFdI7s";
 
-      mergeImages([
-        { src: url1, x: 0, y: 0 },
-        { src: url2, x: 0, y: 500 },
-      ]).then((b64) => (document.querySelector("img").src = b64));
+      let b641 = "data:image/png;base64,";
+
+      $.get(url1, function (data) {
+        console.image(data);
+        console.log("loaded");
+        b641 = "data:image/png;base64," + data;
+
+        $.get(url2, function (data) {
+          console.image(data);
+          console.log("loaded");
+          b642 = "data:image/png;base64," + data;
+
+          mergeImages([
+            { src: b641, x: 0, y: 0 },
+            { src: b642, x: 0, y: 500 },
+          ]).then((b64) => (document.querySelector("img").src = b64));
+        });
+      });
 
       function init() {
         console.log("loading");
-        // $.get(
-        //   "https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=180.78&pitch=-0.76&key=AIzaSyCdksRwVLOQCqlPF1qXBfAXQwyuKfFdI7s",
-        //   function (data) {
-        //     console.image(data);
-        //     console.log("loaded");
-        // 	/* PUT THIS INSIDE AJAX SUCCESS */
-        // 	var img = $('<img id="image_id">');
-        // 	img.attr('src', 'data:image/png;base64,' + data);
-        // 	img.appendTo('#image_div');
-        //   }
-        // );
 
         renderer = new THREE.WebGLRenderer();
         renderer.setPixelRatio(window.devicePixelRatio);
